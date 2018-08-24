@@ -1,14 +1,112 @@
+<!--
+  Generated template for the HomePage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
 <ion-header>
-  <ion-navbar>
-    <ion-title>
-      Ionic Blank
-    </ion-title>
+
+  <ion-navbar color="chocolate">
+    <ion-title>My File</ion-title>
   </ion-navbar>
+
 </ion-header>
 
-<ion-content padding>
-  The world is your oyster.
-  <p>
-    If you get lost, the <a href="http://ionicframework.com/docs/v2">docs</a> will be your guide.
-  </p>
+<ion-content class="pat">
+
+
+    <div padding >
+
+
+      
+        <ion-segment [(ngModel)]="gallery" >
+          <ion-segment-button value="picture" (click)="displaycamera()" >
+
+            <div  class="pit"> 
+            PICTURES
+          </div>
+          </ion-segment-button>
+
+          <ion-segment-button value="video" (click)="displayvideo()">
+
+              <div  class="pit"> 
+              VIDEOS
+              </div>
+            </ion-segment-button>
+
+          
+          <ion-segment-button value="audio"  (click)="displayaudio()">
+
+              <div  class="pit"> 
+              AUDIO
+              </div>
+          </ion-segment-button>
+        </ion-segment>
+      </div>
+      
+     
+      
+      
+       
+      <div [ngSwitch]="gallery">
+        
+          <ion-item *ngSwitchCase="'picture'" class="pet">
+            <ion-thumbnail item-start>
+              <img *ngFor="let image of images" src="{{image}}" >
+            </ion-thumbnail>
+
+            
+        <ion-fab right bottom id="me">
+          <button  (click)="uploads('camera')" ion-fab color="light" id="pot"> <ion-icon ios="ios-camera" md="md-camera"></ion-icon></button> -->
+      
+      </ion-fab>
+
+          </ion-item>
+        
+        
+
+           
+        
+            <ion-item *ngSwitchCase="'video'" class="pet" >
+              <ion-thumbnail item-start>
+                
+
+                  <video *ngFor="let video of videos" width="320" height="240" controls>
+                      <source src="{{video}}" type="video/mp4">
+                    
+                    </video>
+              </ion-thumbnail>
+             
+              <ion-fab right bottom id="me">
+              <button  (click)="uploads('video')" ion-fab color="light" id="pot"><ion-icon ios="ios-videocam" md="md-videocam"></ion-icon></button>
+            </ion-fab>
+            </ion-item>
+          
+          
+
+
+
+      
+        <ion-item *ngSwitchCase="'audio'"  class="pet">
+          
+            <ion-thumbnail item-start>
+
+              <audio *ngFor="let audio of audios" controls>
+                
+                  <source src="{{audio}}" type="audio/mpeg">
+        
+              </audio>
+            </ion-thumbnail>
+
+            <ion-fab right bottom id="me">
+            <button  (click)="uploads('audio')" ion-fab color="light" id="pot"><ion-icon ios="ios-mic" md="md-mic"></ion-icon></button>
+          </ion-fab>
+          </ion-item>
+          
+        
+      </div>
+  
+    
 </ion-content>
+
+
